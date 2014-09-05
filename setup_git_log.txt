@@ -1,0 +1,171 @@
+[izham@localhost ~]$ yum install git
+Loaded plugins: langpacks, refresh-packagekit
+You need to be root to perform this command.
+[izham@localhost ~]$ su
+Password: 
+[root@localhost izham]# yum install git
+Loaded plugins: langpacks, refresh-packagekit
+updates/20/x86_64/metalink                                  |  28 kB  00:00     
+Package git-1.9.3-1.fc20.x86_64 already installed and latest version
+Nothing to do
+[root@localhost izham]# exit
+exit
+[izham@localhost ~]$ git config --global user.name "Zach Izham"
+[izham@localhost ~]$ git config --global user.email "izham@gmx.net"
+[izham@localhost ~]$ git config --global color.ui true
+[izham@localhost ~]$ pwd
+/home/izham
+[izham@localhost ~]$ ls
+Desktop  Documents  Downloads  Music  Pictures  Public  R  Templates  Videos
+[izham@localhost ~]$ cd R
+[izham@localhost R]$ ls
+x86_64-redhat-linux-gnu-library
+[izham@localhost R]$ cd ..
+[izham@localhost ~]$ pwd
+/home/izham
+[izham@localhost ~]$ ls
+Desktop  Documents  Downloads  Music  Pictures  Public  R  Templates  Videos
+[izham@localhost ~]$ cd Do
+Documents/ Downloads/ 
+[izham@localhost ~]$ cd Documents/
+[izham@localhost Documents]$ ls
+rexp
+[izham@localhost Documents]$ mkdir play_git
+[izham@localhost Documents]$ ls
+play_git  rexp
+[izham@localhost Documents]$ rm play_git/
+rm: cannot remove ‘play_git/’: Is a directory
+[izham@localhost Documents]$ rmv play_git/
+bash: rmv: command not found...
+[izham@localhost Documents]$ rmv play_git
+bash: rmv: command not found...
+[izham@localhost Documents]$ rm play_git
+rm: cannot remove ‘play_git’: Is a directory
+[izham@localhost Documents]$ rmdir play_git
+[izham@localhost Documents]$ ls
+rexp
+[izham@localhost Documents]$ mkdir store
+[izham@localhost Documents]$ ls
+rexp  store
+[izham@localhost Documents]$ cd store
+[izham@localhost store]$ git init
+Initialized empty Git repository in /home/izham/Documents/store/.git/
+[izham@localhost store]$ git status
+On branch master
+
+Initial commit
+
+nothing to commit (create/copy files and use "git add" to track)
+[izham@localhost store]$ gedit README.txt
+[izham@localhost store]$ ls
+README.txt
+[izham@localhost store]$ git status 
+On branch master
+
+Initial commit
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	README.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+[izham@localhost store]$ git add README.txt 
+[izham@localhost store]$ git sta
+stage    stash    status   
+[izham@localhost store]$ git status 
+On branch master
+
+Initial commit
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+	new file:   README.txt
+
+[izham@localhost store]$ git commit -m "Create a README"
+[master (root-commit) 9e63b68] Create a README
+ 1 file changed, 4 insertions(+)
+ create mode 100644 README.txt
+[izham@localhost store]$ git status 
+On branch master
+nothing to commit, working directory clean
+[izham@localhost store]$ gedit README.txt 
+[izham@localhost store]$ gedit LICENSE
+[izham@localhost store]$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   README.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	LICENSE
+	README.txt~
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[izham@localhost store]$ git add --all
+[izham@localhost store]$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	new file:   LICENSE
+	modified:   README.txt
+	new file:   README.txt~
+
+[izham@localhost store]$ git commit -m "Add LICENSE & modify README."
+[master fc12697] Add LICENSE & modify README.
+ 3 files changed, 23 insertions(+)
+ create mode 100644 LICENSE
+ create mode 100644 README.txt~
+[izham@localhost store]$ git status
+On branch master
+nothing to commit, working directory clean
+[izham@localhost store]$ git log
+commit fc1269723cb617efed41a9b96780be4235ab904c
+Author: Zach Izham <izham@gmx.net>
+Date:   Fri Sep 5 12:00:24 2014 +0100
+
+    Add LICENSE & modify README.
+
+commit 9e63b6836d8b4dbb14eed924d5bb02fe958ba438
+Author: Zach Izham <izham@gmx.net>
+Date:   Fri Sep 5 11:51:52 2014 +0100
+
+    Create a README
+[izham@localhost store]$ gedit README.txt
+[izham@localhost store]$ gedit README.txt
+[izham@localhost store]$ git log --oneline
+fc12697 Add LICENSE & modify README.
+9e63b68 Create a README
+[izham@localhost store]$ pwd
+/home/izham/Documents/store
+[izham@localhost store]$ git remote add origin https://github.com/drizham/store.git
+[izham@localhost store]$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   README.txt
+	modified:   README.txt~
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[izham@localhost store]$ git remote -v
+origin	https://github.com/drizham/store.git (fetch)
+origin	https://github.com/drizham/store.git (push)
+[izham@localhost store]$ git push origin master
+Username for 'https://github.com': drizham
+Password for 'https://drizham@github.com': 
+Counting objects: 7, done.
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (7/7), 971 bytes | 0 bytes/s, done.
+Total 7 (delta 0), reused 0 (delta 0)
+To https://github.com/drizham/store.git
+ * [new branch]      master -> master
+[izham@localhost store]$ 
+
